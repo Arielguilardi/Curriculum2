@@ -14,33 +14,63 @@ body,
 h1,
 h2,
 h3,
-h4,
 p,
 figure,
 blockquote,
 dl,
-dd,
-strong {
+dd {
     margin-block-end: 0;
 }
 
 /* FIM RESET GLOBAL */
 
+/* Variáveis CSS */
+:root {
+    --cor-primaria: #004ADB;
+    --cor-secundaria: #f1f1f1;
+    --cor-texto: white;
+    --cor-texto-hover: black;
+    --padding-padrao: 20px;
+    --largura-maxima: 1000px;
+}
+
+/* Estilos Globais */
 body {
+    padding: 0;
+    margin: auto;
     font-family: "Inter", sans-serif;
-    width: 1000px;
-    height: 300px;
+    width: var(--largura-maxima);
+}
+
+/* Estilos de Elementos */
+hr {
+    margin: 30px 0;
+}
+
+/* Estilos de Títulos */
+#conteudo h1,
+#conteudo h2,
+#conteudo h3,
+#conteudo h4 {
+    color: var(--cor-primaria);
+    padding: 15px 0;
+    text-align: left;
 }
 
 #cabecalho {
-    background-color: #004ADB;
-    color: white;
-    display: flex;
+    background-color: var(--cor-primaria);
+    width: 100%;
+    color: var(--cor-texto);
     align-items: center;
-    /* width: 100%;
-    height: auto; */
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
+}
+
+#cabecalho h1 {
+    font-size: 50px;
+}
+
+#cabecalho h2 {
+    font-size: 30px;
 }
 
 #cabecalho img {
@@ -50,81 +80,131 @@ body {
     background-color: #D9D9D9;
 }
 
-#cabecalho li {
-    list-style: none;
-    text-align: right;
-    font-size: 20px;
+#titulos {
+    padding: var(--padding-padrao);
 }
 
-#cabecalho h1 {
-    font-size: 50px;
-}
-
-#cabecalho h2 {
-    font-size: 20px;
-}
-
-#cabecalho #imagem,
+#imagem,
 #contatos {
-    padding: 20px 40px;
+    padding: var(--padding-padrao) 40px;
 }
 
 #contatos a {
     text-decoration: none;
-    color: white;
+    color: var(--cor-texto);
 }
 
 #contatos a:hover {
-    color: black;
+    color: var(--cor-texto-hover);
 }
 
 #conteudo {
-    background-color: #f1f1f1;
+    background-color: var(--cor-secundaria);
     padding: 0 100px;
 }
 
-#conteudo h1 {
-    font-size: 50px;
-    /* Espaçamento de todos os titulos  */
-    color: #004ADB;
-    padding: 20px 0;
-    padding-top: 30px;
+/* Estilos de Colunas */
+.coluna-conteudo {
+    min-height: 350px;
+    text-align: justify;
 }
 
-.linha {
-    padding: 30px 0;
-}
-
-#conteudo h2,
-#conteudo h3 {
-    color: #004ADB;
-    padding: 15px 0;
-}
-
-#conteudo h4 {
-    color: #004ADB;
-}
-
-#conteudo h2 {
-    width: 700px;
-    font-size: 30px;
-    padding-bottom: 50px;
-}
-
-
-
-#colunas-experiencias {
-    padding-bottom: 30px;
+.colunas-experiencias,
+.colunas-sobre {
+    padding-bottom: 40px;
 }
 
 .colunas-experiencias,
 .colunas-complemento {
     display: grid;
-    grid-template-columns: 50% 50%;
-    gap: 10%;
+    grid-template-columns: 1fr 1fr;
+    gap: 5%;
 }
 
-#conteudo p {
-    padding: 20px 0;
-
+.colunas-complemento ul li {
+    list-style-position: inside;
 }
+
+/* Media Queries */
+@media (max-width: 800px) {
+    body {
+        width: 100%;
+    }
+
+    hr {
+        margin: 15px 0;
+    }
+
+    #cabecalho h1 {
+        font-size: 50px;
+    }
+
+    #contatos a {
+        color: var(--cor-texto);
+    }
+
+    #cabecalho {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    #imagem,
+    #titulos,
+    #contatos {
+        padding: 10px 0;
+    }
+
+    #conteudo {
+        padding: 0 50px;
+    }
+
+    .colunas-sobre {
+        padding: 0;
+    }
+}
+
+@media (max-width: 650px) {
+    .coluna-conteudo {
+        min-height: auto;
+    }
+
+    .colunas-experiencias {
+        display: block;
+    }
+}
+
+@media (max-width: 500px) {
+    #cabecalho h1 {
+        font-size: 35px;
+    }
+
+    .colunas-experiencias,
+    .colunas-complemento {
+        display: block;
+    }
+}
+
+
+/* Aqui estão algumas sugestões para melhorar seu CSS, tornando-o mais organizado, legível e eficiente:
+1. Organização e Estrutura
+
+Organize seu CSS em seções lógicas, como Reset, Layout, Tipografia, Estilos de Componentes, etc. Isso ajuda na manutenção e na leitura.
+2. Uso de Variáveis CSS
+
+Se você está utilizando o CSS moderno, considere usar variáveis CSS para cores, tamanhos de fonte, etc. Isso facilita a alteração de temas e cores no futuro.
+3. Unidades Relativas
+
+Sempre que possível, utilize unidades relativas (em, rem, %) em vez de unidades fixas (px). Isso melhora a responsividade e acessibilidade.
+4. Comentários Claros
+
+Adicione comentários claros e descritivos para seções e propriedades específicas, ajudando outros desenvolvedores (ou você mesmo no futuro) a entender rapidamente o que faz cada parte.
+5. Consolidação de Seletores
+
+Evite duplicação de regras, consolidando seletores sempre que possível.
+6. Evitar !important
+
+Evite o uso excessivo de !important, pois isso pode dificultar a manutenção do código. Tente usar a especificidade para controlar os estilos.
+7. Aprimoramento da Responsividade
+
+Aprimore as media queries e considere utilizar uma abordagem mobile-first. Isso garante que o design funcione em dispositivos menores primeiro. */
